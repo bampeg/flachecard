@@ -25,5 +25,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:4400"
+  "proxy": "http://localhost:4400",
+  "main": "server/server.js"
 }

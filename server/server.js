@@ -4,11 +4,11 @@ const app = express()
 let cards = [
     {
         id: 0,
-        question: 'Why did the chicken cross the road?',
-        answer: 'To get to the other side.'
+        front: 'Why did the chicken cross the road?',
+        back: 'To get to the other side.'
     },
 ]
-let id = 0
+let id = 1
 
 app.get('/flashcards', (req, res) => {
     res.send(cards)

@@ -1,18 +1,35 @@
-import React from 'react'
-// import ReactCardFlip from 'react-card-flip'
+import React, { Component } from 'react'
+import ReactCardFlip from 'react-card-flip'
+import Side from './Side'
 import './Card.css'
 
-export default function (props) {
-    let { question, answer, id } = props.card
-
-    return (
-        <div>
-            <div className="card">
-                question: {question}
-                answer: {answer}
-            </div>
-
-            <button onClick={() => props.delete(id)}>delete</button>
-        </div>
-    )
+export default class Card extends Component {
+    constructor() {
+        super()
+        this.state = {
+            isFlipped: false
+        }
+        this.flipCard = this.flipCard.bind(this)
+    }
+    flipCard(e) {
+        e.preventDefault()
+        this.setState(prevState => ({
+            isFlipped: !prevState.isFlipped
+        }))
+    }
+    render() {
+        let { front, back } = this.props.card
+        return (
+            <ReactCardFlip isFlipped={this.state.isFlipped}>
+                <Side key="front">
+                    {front}
+                    <button onClick={this.flipCard}>Click</button>
+                </Side>
+                <Side key="back">
+                    {back}
+                    <button onClick={this.flipCard}>Click</button>
+                </Side>
+            </ReactCardFlip>
+        )
+    }
 }

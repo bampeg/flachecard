@@ -42,13 +42,12 @@ class Cards extends Component {
   }
 
   render() {
-    console.log(this.state)
     let cards = "You don't currently have any flashcards."
 
     if (this.state.cards[0]) {
       cards = this.state.cards.map((flashcard) => {
         return (
-          <Card delete={this.deleteCard} card={flashcard} />
+          <Card key={flashcard.id} delete={this.deleteCard} card={flashcard} />
         )
       })
     }
