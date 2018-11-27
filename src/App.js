@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Cards from './Cards'
+import Cards from './components/Cards/Cards'
 
 
 class App extends Component {

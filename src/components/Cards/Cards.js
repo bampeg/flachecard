@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import Card from './Card'
-import './App.css';
+import Card from '../Card/Card'
+import './Cards.css';
 
 class Cards extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       cards: [],
-      newQuestion: ''
+      newQuestion: '',
       newAnswer: ''
     }
     this.deleteCard = this.deleteCard.bind(this)
@@ -21,7 +21,7 @@ class Cards extends Component {
       })
     })
   }
-  deleteCard(cardId){
+  deleteCard(cardId) {
     axios.delete(`/flashcards/${cardId}`).then((response) => {
       this.setState({
         cards: response.data
@@ -29,15 +29,15 @@ class Cards extends Component {
     })
   }
 
-  createCard(){
+  createCard() {
     let newCard = {
-        question: this.state.newQuestion,
-        answer: this.state.newAnswer
+      question: this.state.newQuestion,
+      answer: this.state.newAnswer
     }
-    axios.post('/flashcards', newCard).then((response)=>{
-        this.setState({
-            cards: response.data
-        })
+    axios.post('/flashcards', newCard).then((response) => {
+      this.setState({
+        cards: response.data
+      })
     })
   }
 
@@ -45,10 +45,10 @@ class Cards extends Component {
     console.log(this.state)
     let cards = "You don't currently have any flashcards."
 
-    if(this.state.cards[0]){
+    if (this.state.cards[0]) {
       cards = this.state.cards.map((flashcard) => {
         return (
-          <Card delete={this.deleteCard} card={flashcard}/>
+          <Card delete={this.deleteCard} card={flashcard} />
         )
       })
     }
