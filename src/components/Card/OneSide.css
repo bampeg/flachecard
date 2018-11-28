@@ -1,0 +1,21 @@
+.card {
+    background: #f9f9f9;
+    height: 200px;
+    width: 300px;
+    box-shadow: 1px 1px 4px rgb(160, 160, 160); 
+    margin: 50px;
+    overflow-wrap: break-word
+}
+.front {
+    height: 1px;
+    box-shadow: 
+        0 30px #E1ABAE,
+        0 50px #9FC5E8, 
+        0 70px #9FC5E8, 
+        0 90px #9FC5E8, 
+        0 110px #9FC5E8, 
+        0 130px #9FC5E8, 
+        0 150px #9FC5E8, 
+        0 170px #9FC5E8, 
+        0 190px #9FC5E8;
+}

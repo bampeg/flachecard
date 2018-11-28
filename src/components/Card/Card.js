@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactCardFlip from 'react-card-flip'
-import Side from './Side'
-import './Card.css'
+import Side from './OneSide'
 
 export default class Card extends Component {
     constructor() {
@@ -18,16 +17,18 @@ export default class Card extends Component {
         }))
     }
     render() {
-        let { front, back } = this.props.card
+        let { frontContent, backContent } = this.props.card
         return (
-            <ReactCardFlip isFlipped={this.state.isFlipped}>
-                <Side key="front">
-                    {front}
-                    <button onClick={this.flipCard}>Click</button>
+            <ReactCardFlip
+                isFlipped={this.state.isFlipped}
+                infinite={true}
+                flipSpeedBackToFront={0.2}
+                flipSpeedFrontToBack={0.2}>
+                <Side side="front" flipCard={this.flipCard} key="front">
+                    {frontContent}
                 </Side>
-                <Side key="back">
-                    {back}
-                    <button onClick={this.flipCard}>Click</button>
+                <Side side="back" flipCard={this.flipCard} key="back">
+                    {backContent}
                 </Side>
             </ReactCardFlip>
         )

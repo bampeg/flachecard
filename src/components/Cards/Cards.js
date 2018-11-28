@@ -45,9 +45,9 @@ class Cards extends Component {
     let cards = "You don't currently have any flashcards."
 
     if (this.state.cards[0]) {
-      cards = this.state.cards.map((flashcard) => {
+      cards = this.state.cards.map((card) => {
         return (
-          <Card key={flashcard.id} delete={this.deleteCard} card={flashcard} />
+          <Card key={card.id} card={card} />
         )
       })
     }

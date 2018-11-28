@@ -4,8 +4,13 @@ const app = express()
 let cards = [
     {
         id: 0,
-        front: 'Why did the chicken cross the road?',
-        back: 'To get to the other side.'
+        frontContent: 'Why did the chicken cross the road?',
+        backContent: 'To get to the other side.'
+    },
+    {
+        id: 0,
+        frontContent: 'Why did the chicken cross the road?',
+        backContent: 'To get to the other side.'
     },
 ]
 let id = 1
