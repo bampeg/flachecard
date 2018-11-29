@@ -45,6 +45,8 @@ class Cards extends Component {
     let cards = "You don't currently have any flashcards."
 
     if (this.state.cards[0]) {
+
+
       cards = this.state.cards.map((card) => {
         return (
           <Card key={card.id} card={card} />
@@ -52,12 +54,14 @@ class Cards extends Component {
       })
     }
 
+
+
     return (
-      <div className="App">
+      <div className="Cards">
         {cards}
       </div>
     );
   }
 }
 
-export default Cards;
+export default Cards

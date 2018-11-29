@@ -8,7 +8,7 @@ let cards = [
         backContent: 'To get to the other side.'
     },
     {
-        id: 0,
+        id: 1,
         frontContent: 'Why did the chicken cross the road?',
         backContent: 'To get to the other side.'
     },
@@ -32,7 +32,7 @@ app.delete('/flashcards/:cardId', (req, res) => {
 })
 
 app.post('/flashcards', (req, res) => {
-    req.body.id = id
+    req.body.question
     cards.push(req.body)
     res.send(cards)
 })

@@ -1,12 +1,12 @@
 import React from 'react'
-import './OneSide.css'
+import './Card.css'
 
 export default (props) => {
-  let { side, flipCard, children } = props
+  let { side, content } = props
   return (
-    <div className="card" onClick={flipCard}>
+    <div className="card" >
       <div className={side}></div>
-      {children}
+      {content}
     </div>
   )
 }
