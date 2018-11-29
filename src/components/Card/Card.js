@@ -18,8 +18,18 @@ export default class Card extends Component {
                     isFlippable={true}
                     showBackSide={false}
                     flipOrientation={'horizontal'}
-                    front={<OneSide side="front" content={frontContent} />}
-                    back={<OneSide side="back" content={backContent} />}
+                    front={
+                        <OneSide
+                            side="front"
+                            content={frontContent}
+                        />
+                    }
+                    back={
+                        <OneSide
+                            side="back"
+                            content={backContent}
+                        />
+                    }
                 />
             </div>
         )
