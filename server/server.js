@@ -4,16 +4,20 @@ const app = express()
 let cards = [
     {
         id: 0,
-        frontContent: 'Why did the chicken cross the road?',
-        backContent: 'To get to the other side.'
+        front: 'Why did the chicken cross the road?',
+        back: 'To get to the other side.'
     },
     {
         id: 1,
-        frontContent: 'Why did the chicken cross the road?',
-        backContent: 'To get to the other side.'
+        front: 'What is your favorite colour?',
+        back: 'Red..no Green, ahhhhh!'
+    },
+    {
+        id: 2,
+        front: 'What is the answer to life, the universe, and everything?',
+        back: '42'
     },
 ]
-let id = 1
 
 app.get('/flashcards', (req, res) => {
     res.send(cards)
@@ -22,7 +26,6 @@ app.get('/flashcards', (req, res) => {
 app.delete('/flashcards/:cardId', (req, res) => {
     let { cardId } = req.params
     let indexToRemove = cards.findIndex((card) => {
-        // console.log(card.id, cardId)
         return card.id === +cardId
     })
     if (indexToRemove !== -1) {

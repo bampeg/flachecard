@@ -9,7 +9,6 @@ export default class Card extends Component {
             isFlipped: false
         }
     }
-
     render() {
         let { frontContent, backContent } = this.props.card
         return (
