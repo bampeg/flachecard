@@ -1,27 +1,34 @@
+require('dotenv').config()
 const express = require('express')
-const app = express()
+const massive = require('massive')
+
 const { decks } = require('./decks')
+const {
+    SERVER_PORT,
+    CONNECTION_STRING,
+} = process.env
 
-app.get('/flashcards', (req, res) => {
-    res.send(decks[0])
-})
+const app = express()
 
-app.delete('/flashcards/:cardId', (req, res) => {
-    let { cardId } = req.params
-    let indexToRemove = decks.findIndex((card) => {
-        return card.id === +cardId
-    })
-    if (indexToRemove !== -1) {
-        decks.splice(indexToRemove, 1)
-        res.send(decks)
-    }
-})
-
-app.post('/flashcards', (req, res) => {
-    req.body.question
-    decks.push(req.body)
+app.get('/flachecards', (req, res) => {
     res.send(decks)
 })
 
-const port = 4400
-app.listen(port, () => console.log('server running on port ' + port))
+// app.delete('/flachecards/:cardId', (req, res) => {
+//     let { cardId } = req.params
+//     let indexToRemove = decks.findIndex((card) => {
+//         return card.id === +cardId
+//     })
+//     if (indexToRemove !== -1) {
+//         decks.splice(indexToRemove, 1)
+//         res.send(decks)
+//     }
+// })
+
+// app.post('/flachecards', (req, res) => {
+//     req.body.question
+//     decks.push(req.body)
+//     res.send(decks)
+// })
+
+app.listen(SERVER_PORT, () => console.log('server running on port ' + port))

@@ -1,43 +1,43 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-// import Cards from './components/Cards/Cards'
 import Deck from './components/Deck/Deck'
-// import Card from './components/Card/Card'
+import SelectDeck from './components/SelectDeck/SelectDeck'
 import Menu from './components/Menu/Menu'
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      cards: [],
+      decks: [],
+      selectedDeck: []
     }
+    this.selectDeck = this.selectDeck.bind(this)
   }
   componentDidMount() {
     axios
       .get('/flashcards')
       .then((response) => {
+        console.log(response)
         this.setState({
-          cards: response.data
+          decks: response.data
         })
       })
   }
+  selectDeck(index) {
+    this.setState({
+      selectedDeck: this.state.decks[index]
+    })
+  }
   render() {
-    let { cards } = this.state
-    // let cards = "You don't currently have any flashcards."
-    // if (this.state.cards[0]) {
-    //   cards = this.state.cards.map((card) => {
-    //     return (
-    //       <Card key={card.id} card={card} />
-    //     )
-    //   })
-    // }
+    let { decks, selectedDeck } = this.state
+    let message = <h3>Please create a deck of flashcards.</h3>
     return (
       <React.Fragment>
-        {/* <MotivationalQuotes /> */}
+        {/* <MotivationalQuotes? /> */}
         <Menu color="orange" />
-        {/* <Cards /> */}
-        {cards[0] ? <Deck deck={cards} /> : "no deck"}
+        {selectedDeck[0] ? <Deck deck={selectedDeck} /> : message}
+        <SelectDeck decks={decks} selectDeck={this.selectDeck} />
       </React.Fragment>
     )
   }

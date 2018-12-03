@@ -16,6 +16,18 @@ module.exports = {
                 front: 'What is the answer to life, the universe, and everything?',
                 back: '42'
             },
+        ],
+        [
+            {
+                id: 3,
+                front: '1 + 1',
+                back: '2',
+            },
+            {
+                id: 4,
+                front: '12 * 3',
+                back: '36'
+            }
         ]
     ]
 }

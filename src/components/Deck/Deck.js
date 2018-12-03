@@ -11,17 +11,17 @@ export default class Deck extends Component {
   }
   render() {
     let { deck } = this.props
+    console.log(deck)
     if (this.props.deck[0]) {
       deck = CardBuilder(deck).map(card => card.front)
     } else {
       deck = 'You have not selected a deck.'
     }
     return (
-      <React.Fragment>
+      <div className="deck">
         {deck}
-
         {/* top interactable card */}
-      </React.Fragment>
+      </div>
     )
   }
 }
