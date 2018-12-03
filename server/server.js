@@ -10,6 +10,11 @@ const {
 
 const app = express()
 
+massive(CONNECTION_STRING).then(db => {
+    console.log('db connected')
+    app.set('db', db)
+})
+
 app.get('/flachecards', (req, res) => {
     res.send(decks)
 })
@@ -31,4 +36,4 @@ app.get('/flachecards', (req, res) => {
 //     res.send(decks)
 // })
 
-app.listen(SERVER_PORT, () => console.log('server running on port ' + port))
+app.listen(SERVER_PORT, () => console.log('server running on port ' + SERVER_PORT))
