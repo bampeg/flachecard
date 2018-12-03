@@ -10,9 +10,11 @@ export default class Deck extends Component {
     }
   }
   render() {
-    let deck = 'You have not selected a deck.'
-    if(this.state.deck[0]){
-      deck = CardBuilder(this.state.cards).map(card => card.front)
+    let { deck } = this.props
+    if (this.props.deck[0]) {
+      deck = CardBuilder(deck).map(card => card.front)
+    } else {
+      deck = 'You have not selected a deck.'
     }
     return (
       <React.Fragment>

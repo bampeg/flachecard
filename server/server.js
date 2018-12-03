@@ -1,44 +1,26 @@
 const express = require('express')
 const app = express()
+const { decks } = require('./decks')
 
-let decks = [
-    [
-        {
-            id: 0,
-            front: 'Why did the chicken cross the road?',
-            back: 'To get to the other side.'
-        },
-        {
-            id: 1,
-            front: 'What is your favorite colour?',
-            back: 'Red..no Green, ahhhhh!'
-        },
-        {
-            id: 2,
-            front: 'What is the answer to life, the universe, and everything?',
-            back: '42'
-        },
-    ]
-]
 app.get('/flashcards', (req, res) => {
-    res.send(cards)
+    res.send(decks[0])
 })
 
 app.delete('/flashcards/:cardId', (req, res) => {
     let { cardId } = req.params
-    let indexToRemove = cards.findIndex((card) => {
+    let indexToRemove = decks.findIndex((card) => {
         return card.id === +cardId
     })
     if (indexToRemove !== -1) {
-        cards.splice(indexToRemove, 1)
-        res.send(cards)
+        decks.splice(indexToRemove, 1)
+        res.send(decks)
     }
 })
 
 app.post('/flashcards', (req, res) => {
     req.body.question
-    cards.push(req.body)
-    res.send(cards)
+    decks.push(req.body)
+    res.send(decks)
 })
 
 const port = 4400

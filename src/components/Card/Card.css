@@ -4,6 +4,7 @@
 }
 .card {
     position: absolute;
+    text-align: center;
     background: #f9f9f9;
     height: 200px;
     width: 300px;
