@@ -4,7 +4,7 @@ import Card from '../Card/Card'
 import CardBuilder from '../Deck/CardBuilder'
 import './Cards.css'
 
-class Cards extends Component {
+export default class Cards extends Component {
   constructor() {
     super()
     this.state = {
@@ -50,7 +50,7 @@ class Cards extends Component {
     if (this.state.cards[0]) {
       cards = this.state.cards.map((card) => {
         return (
-          <Card key={card.id} card={card} />
+           <Card key={card.id} card={card} />
         )
       })
     }
@@ -62,4 +62,3 @@ class Cards extends Component {
     )
   }
 }
-export default Cards

@@ -8,14 +8,19 @@
     height: 200px;
     width: 300px;
     box-shadow: 1px 1px 4px rgb(160, 160, 160);
-    left: 50%;
-    right: 50%;
     margin: 50px;
     overflow-wrap: break-word
 }
 .card:nth-child(3n+1) {
     transform: rotate(3deg);
 }
+.card:nth-child(3n+2) {
+    transform: rotate(-2deg);
+}
+/* .card:nth-child(3n+3) {
+    top: 51px;
+    right: 51px;
+} */
 .front {
     height: 1px;
     box-shadow: 
