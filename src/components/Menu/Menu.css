@@ -1,5 +1,7 @@
 .menu {
-  height: 50px;
-  width: 100vw;
+  margin: 0;
+  padding: 1vw 0;
   box-shadow: 0 2px 4px rgb(160, 160, 160); 
+  text-align: center;
+  color: rgb(255, 255, 255);
 }

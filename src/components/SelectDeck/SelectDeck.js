@@ -1,21 +1,17 @@
-import React from 'react'
-import Deck from '../Deck/Deck'
+import React from "react";
+import Deck from "../Deck/Deck";
 
-import './SelectDeck.css'
+import "./SelectDeck.css";
 
-export default (props) => {
-  let { decks, selectDeck } = props
+export default function SelectDeck(props) {
+  let { decks, selectDeck } = props;
   decks = decks.map((deck, i) => {
-    console.log(decks)
+    console.log(decks);
     return (
       <div onClick={() => selectDeck(i)}>
         <Deck deck={deck} />
       </div>
-    )
-  })
-  return (
-    <div className="select-deck-container">
-      {decks}
-    </div>
-  )
+    );
+  });
+  return <div className="select-deck-container">{decks}</div>;
 }
