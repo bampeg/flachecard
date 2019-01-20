@@ -3,7 +3,6 @@
     width: 100vw;
 }
 .card {
-    position: absolute;
     text-align: center;
     background: #f9f9f9;
     height: 200px;
@@ -11,6 +10,9 @@
     box-shadow: 1px 1px 4px rgb(160, 160, 160);
     margin: 50px;
     overflow-wrap: break-word
+}
+.card:nth-child(n+1){
+    position: absolute;
 }
 .card:nth-child(3n+1) {
     transform: rotate(3deg);

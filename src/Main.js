@@ -3,24 +3,25 @@ import axios from "axios";
 
 import Deck from "./components/Deck/Deck";
 import SelectDeck from "./components/SelectDeck/SelectDeck";
-import Menu from "./components/Menu/Menu";
 
 export default class Main extends Component {
   constructor() {
     super();
     this.state = {
+      user: {},
       decks: [],
       selectedDeck: []
     };
     this.selectDeck = this.selectDeck.bind(this);
   }
 
-  componentDidMount() {
-    axios.get("/flachecards").then(response => {
-      // console.log(response);
-      this.setState({
-        decks: response.data
-      });
+  async componentDidMount() {
+    const user = await axios.get("/login");
+    const decks = await axios.get("/flachecards");
+
+    this.setState({
+      user: user.data,
+      decks: decks.data
     });
   }
 
@@ -31,12 +32,12 @@ export default class Main extends Component {
   }
 
   render() {
-    let { decks, selectedDeck } = this.state;
+    let { decks, user, selectedDeck } = this.state;
     let message = <h3>Please create a deck of flashcards.</h3>;
     return (
       <div>
+        Welcome {user.name}
         {/* <MotivationalQuotes? /> */}
-        <Menu color="orange" />
         {selectedDeck[0] ? <Deck deck={selectedDeck} /> : message}
         <SelectDeck decks={decks} selectDeck={this.selectDeck} />
       </div>

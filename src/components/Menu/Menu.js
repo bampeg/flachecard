@@ -7,6 +7,6 @@ export default function Menu(props) {
     background: props.color
   };
   return (
-      <h2 style={style} className="menu">Flachecard</h2>
+      <h1 style={style} className="menu">Flachecard</h1>
   );
 }
