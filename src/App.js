@@ -12,7 +12,7 @@ export default function App() {
       <React.Fragment>
         <Menu color="orange" />
         <Switch>
-          <Route path="/main" component={Main} />
+          <Route path="/main/:userName" component={Main} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={CreateNewAccount} />
         </Switch>

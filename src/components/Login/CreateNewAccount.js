@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
+import { validate } from "email-validator";
 
 export default class CreateNewAccount extends Component {
   state = {
@@ -21,33 +22,43 @@ export default class CreateNewAccount extends Component {
 
   handleLoginClick = async () => {
     const { name, email, password, confirmPassword } = this.state;
+    const validEmail = validate(email);
+    let swalMessage;
     if (name && email && password && confirmPassword) {
-      if (password === confirmPassword) {
-        await axios.post("/auth/signup", { name, email, password });
-        swal(
-          <div>
-            <p>You registered successfully!</p>
-          </div>,
-          { buttons: false }
-        );
-        this.props.history.push('/main')
+      if (validEmail) {
+        if (password === confirmPassword) {
+          try {
+            const { data } = await axios.post("/auth/signup", {
+              name,
+              email,
+              password
+            });
+            if (data.user_name) {
+              swalMessage = "Your account has been created!";
+              this.props.history.push(`/main/${data.user_name}`);
+            } else {
+              console.log('Unknown error')
+            }
+          } catch {
+            swalMessage = "An account with this email already exists.";
+          }
+        } else {
+          swalMessage = "Your passwords do not match.";
+        }
       } else {
-        swal(
-          <div>
-            <p>Your passwords do not match.</p>
-          </div>,
-          { buttons: false }
-        );
+        swalMessage = "Please use a valid email.";
       }
     } else {
-      swal(
-        <div>
-          <p>Please fill in all fields.</p>
-        </div>,
-        { buttons: false }
-      );
+      swalMessage = "Please fill in all fields.";
     }
+    swal(
+      <div>
+        <p>{swalMessage}</p>
+      </div>,
+      { buttons: false }
+    );
   };
+
   render() {
     const { name, email, password, confirmPassword } = this.state;
     return (
@@ -63,7 +74,7 @@ export default class CreateNewAccount extends Component {
           />
           <br />
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="email"
             value={email}
